@@ -9,4 +9,11 @@ const connectDb = require("./server-util/connectDb");
 connectDb();
 app.use(express.json());
 const PORT = process.env.PORT || 3000;
+
+// Routes
+const yelp = require("./api/yelp");
+
+// Link server with APIs
+app.use("/yelp", yelp);
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
