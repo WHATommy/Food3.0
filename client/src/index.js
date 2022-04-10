@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -10,15 +10,19 @@ import {
   Route,
 } from "react-router-dom";
 import Lobby from './components/Lobby';
+import Phase1 from './components/Phases/Phase1'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={ <App /> } />
-      <Route path="/:sessionID" element={ <Lobby /> } />
-    </Routes>
-  </BrowserRouter>,
+  <StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={ <App /> } />
+        <Route path="/:sessionID" element={ <Lobby /> } />
+        <Route path="/:sessionID/phase1" element={ <Phase1 /> } />
+      </Routes>
+    </BrowserRouter>
+  </StrictMode>,
   document.getElementById("root")
 );
 

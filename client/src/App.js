@@ -3,19 +3,19 @@ import 'bootstrap';
 import '@popperjs/core';
 
 import { useNavigate } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import cookie from 'js-cookie';
 
 const App = () => {
   let navigate = useNavigate();
-  const [username, setUsername] = ('');
+  const [username, setUsername] = useState('');
   const onChange = (e) => {
-      setUsername({ [e.target.name]: e.target.value });
+      setUsername(e.target.value);
   }
   const createSession = () => {
     const sessionID = uuidv4();
-    cookie.set('sessionID', sessionID);
+    cookie.set("username", username);
     navigate(`/${sessionID}`);
   }
   return (
@@ -36,7 +36,7 @@ const App = () => {
                   />
               </div>
               <div className="text-center" style={customModalFooter}>
-                  <button type="button" className="btn btn-primary" onClick={createSession}>Create a session</button>
+                  <button type="submit" className="btn btn-primary" onClick={createSession}>Create a session</button>
               </div>
           </form>
         </div>
